@@ -11,7 +11,8 @@ public class LocalMap {
   }
   // Methods
   public void updateLocalMap(Robot robot, MapPanel map){
-    localMap = map;
+    localMap = map.getMap();
+    System.out.println("Hello");
     robotPosition[0][0] = map.robotLabel.getBounds();
   }
 }
