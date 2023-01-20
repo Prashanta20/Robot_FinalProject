@@ -34,13 +34,18 @@ public class Main {
     GUI.setVisible(true);
   }
 
+  public static void setEndPanelVisible(){
+    JPanel endPanel = new EndPanel();
+    pane.removeAll();
+		pane.add(endPanel);
+    GUI.setVisible(true);
+  }
+
   public static void setMapPanelVisible(){
     JPanel mapPanel = new MapPanel(size);
     pane.removeAll();
     pane.add(mapPanel);
     GUI.setVisible(true);
-
-    System.out.println(size);
   }
 
   private static void setIcon(JFrame GUI) {

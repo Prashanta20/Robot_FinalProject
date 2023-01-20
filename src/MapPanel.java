@@ -79,7 +79,7 @@ public class MapPanel extends JPanel implements ActionListener {
           
         } else if (i == size - 1 && k == size - 1) {
           // ENDING BLOCK
-          map[size - 1][size - 1] = new Tiles(0, 0, true, false);
+          map[size - 1][size - 1] = new Tiles(size - 1, size - 1, true, false);
           mapVisual[size - 1][size - 1] = new JLabel();
           mapVisual[size - 1][size - 1].setBounds(((size - 1) * 30) + 10, ((size - 1) * 30) + 10, 30, 30);
           mapVisual[size - 1][size - 1].setIcon(endBlock);
@@ -111,6 +111,11 @@ public class MapPanel extends JPanel implements ActionListener {
   }
 
   public void updateMap(){
+
+    if (robotPosition[0] == size -1 && robotPosition[1] == size - 1){
+      Main.setEndPanelVisible();
+    }
+    
     try {
     for (int i = 0; i < size; i++){
       for (int k = 0; k < size; k++){
@@ -123,6 +128,8 @@ public class MapPanel extends JPanel implements ActionListener {
         }
       }
     }
+    mapVisual[0][0].setIcon(startBlock);
+    mapVisual[size-1][size-1].setIcon(endBlock);
   } catch (IndexOutOfBoundsException e){
     System.out.println(e);
   }
@@ -136,13 +143,14 @@ public class MapPanel extends JPanel implements ActionListener {
     counter = counter +1;
 
     if (counter == 1){
+
       robotPosition[0] = 0;
       robotPosition[1] = 0;
       robotLabel.setBounds(10,10,30,30);
 
       options = localMap.updateLocalMap(robotPosition);
       map = localMap.getMap();
-      updateMap();
+      updateMap(); 
      }
     else {
       // Robot movement
