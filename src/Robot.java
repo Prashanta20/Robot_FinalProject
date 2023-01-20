@@ -14,6 +14,7 @@ import java.util.Random;
 public class Robot {
   //Fields
   private String name;
+  private int[] newPosition;
 
   
   JLabel robot;
@@ -21,8 +22,22 @@ public class Robot {
   //Contructors
   public Robot(String name){
     this.name = name;
+    newPosition = new int[2];
      
   }
-  //Methods
+  //Methods TO MOVE
+  public int[] moveRobot(ArrayList<Tiles> options){
+   
+    if (options.size() > 0){
+      Random rand = new Random();
+
+      int random = rand.nextInt(options.size());
+      newPosition[0] = options.get(random).getY();
+      newPosition[1] = options.get(random).getX();
+    }
+
+   
+    return newPosition;
+  }
   
 }

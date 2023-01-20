@@ -17,7 +17,7 @@ public class Main {
   public static void main(String[] args) {
     
     GUI.setTitle("Robot Maze Runner");
-		GUI.setSize(320,400);
+		GUI.setSize(340,420);
 		GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setIcon(GUI);
 
