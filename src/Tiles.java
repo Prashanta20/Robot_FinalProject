@@ -5,12 +5,15 @@ public class Tiles {
   private int Y;
   private boolean type;
   private boolean show;
+  private boolean walkedOn;
   // Contructor
-  public Tiles(int X, int Y, boolean type, boolean show) {
+  public Tiles(int X, int Y, boolean type, boolean show, boolean walkedOn) {
     this.X = X;
     this.Y = Y;
     this.type = type;
     this.show = show;
+    this.walkedOn = walkedOn;
+
   }
   // getters and setters
   public int getX() {
@@ -43,6 +46,14 @@ public class Tiles {
 
   public boolean getShow(){
     return show;
+  }
+
+  public boolean getWalkedOn(){
+    return walkedOn;
+  }
+
+  public void setWalkedOn(boolean walkedOn){
+    this.walkedOn = walkedOn;
   }
 
   // Overridden

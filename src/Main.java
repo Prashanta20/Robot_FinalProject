@@ -11,13 +11,16 @@ import java.util.Arrays;
 public class Main {
 
   public static int size;
+  public static String data;
   public static JFrame GUI = new JFrame();
   public static Container pane = GUI.getContentPane();
   
   public static void main(String[] args) {
+
+    pane.removeAll();
     
     GUI.setTitle("Robot Maze Runner");
-		GUI.setSize(340,420);
+		GUI.setSize(340,500);
 		GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setIcon(GUI);
 
@@ -34,8 +37,8 @@ public class Main {
     GUI.setVisible(true);
   }
 
-  public static void setEndPanelVisible(){
-    JPanel endPanel = new EndPanel();
+  public static void setEndPanelVisible(String data){
+    JPanel endPanel = new EndPanel(data);
     pane.removeAll();
 		pane.add(endPanel);
     GUI.setVisible(true);

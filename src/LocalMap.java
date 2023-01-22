@@ -1,5 +1,6 @@
 package src;
 import java.util.ArrayList;
+import java.util.HashMap;
 public class LocalMap {
   // Fields
   private Tiles[][] fullMap;
@@ -11,10 +12,12 @@ public class LocalMap {
     
   }
   // Methods
-  public ArrayList<Tiles> updateLocalMap(int[] robotPosition){
+  public HashMap<String, Tiles> updateLocalMap(int[] robotPosition, Tiles[][] map){
 
+    fullMap = map;
     // return a list of the possible tiles that robot can move
     ArrayList<Tiles> options = new ArrayList<>();
+    HashMap<String, Tiles> hashOptions = new HashMap<>();
 
     int [] robotPositionPlaceHolder = robotPosition.clone();
     
@@ -23,6 +26,7 @@ public class LocalMap {
       robotPositionPlaceHolder[0] = robotPositionPlaceHolder[0] -1;
       Tiles up = fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]];
       if (up.getType() == true){
+      hashOptions.put("Up", up);
       options.add(up);
       }
       fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]].setShow(true);
@@ -36,6 +40,7 @@ public class LocalMap {
       robotPositionPlaceHolder[1] = robotPositionPlaceHolder[1] +1;
       Tiles right = fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]];
       if (right.getType() == true){
+        hashOptions.put("Right", right);
         options.add(right);
         }
       fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]].setShow(true);
@@ -49,6 +54,7 @@ public class LocalMap {
       robotPositionPlaceHolder[0] = robotPositionPlaceHolder[0] +1;
       Tiles down = fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]];
       if (down.getType() == true){
+        hashOptions.put("Down", down);
         options.add(down);
         }
       fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]].setShow(true);
@@ -63,6 +69,7 @@ public class LocalMap {
       robotPositionPlaceHolder[1] = robotPositionPlaceHolder[1] -1;
       Tiles left = fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]];
       if (left.getType() == true){
+        hashOptions.put("Left", left);
         options.add(left);
         }
       fullMap[robotPositionPlaceHolder[0]][robotPositionPlaceHolder[1]].setShow(true);
@@ -71,7 +78,7 @@ public class LocalMap {
         System.out.println(e);
     }
 
-    return options;
+    return hashOptions;
 
   }
 

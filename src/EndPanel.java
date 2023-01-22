@@ -3,6 +3,7 @@ package src;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -10,14 +11,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.util.Random;
+import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
-public class EndPanel extends JPanel{
+public class EndPanel extends JPanel implements ActionListener{
 
     JLabel endImage;
     JLabel endText;
     JButton playAgain;
+    JTextArea txtArea;
+    JScrollPane jScrollPane;
 
-    public EndPanel() {
+    public EndPanel(String data) {
 
     this.setBackground(Color.yellow);
     setLayout(null);
@@ -25,6 +30,7 @@ public class EndPanel extends JPanel{
     playAgain = new JButton("Play Again");
     endImage = new JLabel();
     endText = new JLabel("Congratulations On Completing The Game!!!");
+    txtArea = new JTextArea();
     ImageIcon trophy = new ImageIcon("images/luffygame.png");
 
     endImage.setIcon(trophy);
@@ -33,7 +39,21 @@ public class EndPanel extends JPanel{
     endText.setBounds(10,10,400,40);
     endImage.setBounds(10,50,300,300);
 
+    playAgain.addActionListener(this);
+
+    txtArea.setText(data); 
+
+    jScrollPane = new JScrollPane(txtArea);
+    jScrollPane.setBounds(120,360,200,100);
+
+
+    add(jScrollPane);
     add(endImage);
     add(endText);
+    add(playAgain);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        Main.main(null);
     }
 }
